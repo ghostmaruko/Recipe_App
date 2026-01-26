@@ -1,4 +1,12 @@
 {% extends "recipes/base.html" %} {% block content %}
 <h2>Welcome to the Recipe App</h2>
-<p>This is the home page.</p>
+<p>Discover delicious recipes below:</p>
+
+<ul>
+  {% for recipe in recipes %}
+  <li>{{ recipe.name }} - {{ recipe.cooking_time }} min</li>
+  {% empty %}
+  <li>No recipes available yet.</li>
+  {% endfor %}
+</ul>
 {% endblock %}

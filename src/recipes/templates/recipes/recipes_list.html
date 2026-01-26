@@ -1,0 +1,16 @@
+{% extends "recipes/base.html" %} {% block content %}
+<h2>All Recipes</h2>
+<ul>
+  {% for recipe in recipes %}
+  <li>
+    <a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a> —
+    {{recipe.cooking_time }} min — {{ recipe.calculate_difficulty }} |
+    <a href="{% url 'recipes:update' recipe.pk %}">Edit</a> |
+    <a href="{% url 'recipes:delete' recipe.pk %}">Delete</a>
+  </li>
+
+  {% empty %}
+  <li>No recipes yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set "VIRTUAL_ENV=C:\Users\Gesus\Desktop\cf-python\Achievement_2\A2_Recipe_app\a2-ve-recipeapp"
+set "VIRTUAL_ENV=C:\Users\Gesus\Desktop\recipe_app\a2-ve-recipeapp"
 
 if not defined PROMPT set PROMPT=$P$G
 

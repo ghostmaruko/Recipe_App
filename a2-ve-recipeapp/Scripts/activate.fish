@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV 'C:\Users\Gesus\Desktop\cf-python\Achievement_2\A2_Recipe_app\a2-ve-recipeapp'
+set -gx VIRTUAL_ENV 'C:\Users\Gesus\Desktop\recipe_app\a2-ve-recipeapp'
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"Scripts $PATH

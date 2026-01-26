@@ -1,0 +1,10 @@
+{% extends "recipes/base.html" %} {% block content %}
+<h2>New Recipe</h2>
+
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Save</button>
+</form>
+
+<p><a href="{% url 'recipes:list' %}">Back to list</a></p>
+{% endblock %}
