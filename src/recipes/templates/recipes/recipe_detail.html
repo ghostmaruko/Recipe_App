@@ -1,11 +1,44 @@
 {% extends "recipes/base.html" %} {% block content %}
-<h2>{{ recipe.name }}</h2>
-<p><strong>Cooking time:</strong> {{ recipe.cooking_time }} min</p>
-<p><strong>Difficulty:</strong> {{ recipe.calculate_difficulty }}</p>
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    {% if recipe.image %}
+    <img
+      src="{{ recipe.image.url }}"
+      class="card-img-top recipe-detail-img mb-4"
+      alt="{{ recipe.name }}"
+    />
+    {% endif %}
+    <div class="card-body">
+      <h1 class="card-title text-center mb-4">{{ recipe.name }}</h1>
 
-<p>
-  <a href="{% url 'recipes:update' recipe.pk %}">Edit</a> |
-  <a href="{% url 'recipes:delete' recipe.pk %}">Delete</a> |
-  <a href="{% url 'recipes:list' %}">Back to list</a>
-</p>
+      <h4>Ingredients</h4>
+      <ol>
+        {% for ingredient in recipe.ingredients.splitlines %}
+        <li>{{ ingredient }}</li>
+        {% endfor %}
+      </ol>
+      <h4>Preparation</h4>
+      <ul>
+        {% for step in recipe.description.splitlines %}
+        <li>{{ step }}</li>
+        {% endfor %}
+      </ul>
+      <div class="mt-4 text-center">
+        <a
+          href="{% url 'recipes:update' recipe.pk %}"
+          class="btn btn-warning me-2"
+          >Edit</a
+        >
+        <a
+          href="{% url 'recipes:delete' recipe.pk %}"
+          class="btn btn-danger me-2"
+          >Delete</a
+        >
+        <a href="{% url 'recipes:list' %}" class="btn btn-secondary"
+          >Back to all recipes</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

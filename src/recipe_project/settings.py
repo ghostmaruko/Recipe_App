@@ -122,3 +122,9 @@ STATIC_URL = 'static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']
+
+LOGIN_URL = '/login/'
+

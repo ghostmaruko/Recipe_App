@@ -1,7 +1,13 @@
-{% extends "recipes/base.html" %}
+{% extends "recipes/base.html" %} {% block content %}
+<div class="text-center mt-5">
+  <h1 class="display-4">Welcome to My Recipe App!</h1>
+  <p class="lead">Discover and share amazing recipes.</p>
 
-{% block content %}
-<h1>Welcome to My Recipe App!</h1>
-<p>Discover and share amazing recipes.</p>
-<a href="{% url 'recipes:list' %}">See all recipes</a>
+  <div class="mt-4">
+    <a href="{% url 'recipes:login' %}" class="btn btn-primary me-2">Login</a>
+    <a href="{% url 'recipes:list' %}" class="btn btn-success"
+      >See all recipes</a
+    >
+  </div>
+</div>
 {% endblock %}

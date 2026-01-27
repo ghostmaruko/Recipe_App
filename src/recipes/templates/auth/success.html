@@ -1,0 +1,9 @@
+{% extends "recipes/base.html" %} {% block content %}
+<div class="text-center mt-5">
+  <h2 class="text-success mb-3">You've successfully logged out 👋</h2>
+  <p>Thanks for using Recipe App.</p>
+  <a href="{% url 'recipes:login' %}" class="btn btn-primary mt-3"
+    >Login again</a
+  >
+</div>
+{% endblock %}
