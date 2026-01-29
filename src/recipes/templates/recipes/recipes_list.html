@@ -1,4 +1,5 @@
-{% extends "recipes/base.html" %} {% block content %}
+{% extends "recipes/base.html" %} {% load widget_tweaks %} {% block content %}
+
 <div class="d-flex justify-content-between align-items-center mb-4">
   <h1 class="mb-0">All Recipes</h1>
   {% if user.is_authenticated %}
@@ -6,6 +7,31 @@
   {% endif %}
 </div>
 
+<!-- Search Bar -->
+<div class="mb-4">
+  <form method="get" class="row g-3">
+    <div class="col-md-6">{{ form.recipe_name|add_class:"form-control" }}</div>
+
+    <div class="col-md-4">{{ form.category|add_class:"form-select" }}</div>
+
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary w-100">Search</button>
+    </div>
+  </form>
+</div>
+
+<!-- Search Results Table (pandas) -->
+{% if table %}
+<div class="mb-5">
+  <h2 class="mb-3">Search Results (Table)</h2>
+  <div class="table-responsive">
+    {{ table|safe }}
+  </div>
+</div>
+{% endif %}
+
+
+<!-- Lista ricette -->
 <div class="row row-cols-1 row-cols-md-3 g-4">
   {% for recipe in recipes %}
   <div class="col">
@@ -24,15 +50,19 @@
 
       <div class="card-body text-center">
         <h5 class="card-title mt-2">{{ recipe.name }}</h5>
+        {% if recipe.category %}
+        <p class="text-muted">{{ recipe.get_category_display }}</p>
+        {% endif %}
         <a
           href="{% url 'recipes:detail' recipe.pk %}"
           class="btn btn-primary mt-2"
+          >View Recipe</a
         >
-          View Recipe
-        </a>
       </div>
     </div>
   </div>
+  {% empty %}
+  <p>No recipes found.</p>
   {% endfor %}
 </div>
 {% endblock %}

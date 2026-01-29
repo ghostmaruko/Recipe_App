@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Recipe Search</title>
+  </head>
+  <body>
+    <h1>Search Recipes</h1>
+
+    <form method="get">
+      {{ form.as_p }}
+
+
+      <button type="submit">Search</button>
+    </form>
+
+    <hr />
+
+    {% if recipes %}
+    <h2>Results</h2>
+    <ul>
+      {% for recipe in recipes %}
+      <li>
+        <a href="{% url 'recipes:detail' recipe.pk %}">{{ recipe.name }}</a>
+        {% if recipe.category %} - {{ recipe.get_category_display }}{% endif %}
+      </li>
+      {% empty %}
+      <li>No recipes found.</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </body>
+</html>
