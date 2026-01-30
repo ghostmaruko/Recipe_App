@@ -12,6 +12,8 @@ from .forms import RecipeForm, RecipeSearchForm
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from django.shortcuts import render
+
 # Homepage
 def home(request):
     return render(request, 'recipes/welcome.html')
@@ -176,3 +178,7 @@ def recipe_search(request):
     }
 
     return render(request, 'recipes/search.html', context)
+
+# About page
+def about(request):
+    return render(request, 'recipes/about.html')
