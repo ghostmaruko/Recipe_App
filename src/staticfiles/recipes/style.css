@@ -1,0 +1,56 @@
+/* Lista ricette – immagini 1:1 */
+.recipe-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* Placeholder per card senza immagine */
+.recipe-placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #f8f9fa;
+}
+
+/* Card hover */
+.recipe-card {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Titoli e testo */
+.card-title {
+  color: #000 !important;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.card-text {
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* Buttons */
+.card-body a.btn {
+  width: auto;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+/* Dettaglio ricetta  */
+.recipe-detail-img {
+  max-width: 400px;
+  max-height: 400px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
