@@ -5,6 +5,7 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  display: block; /* evita glitch di altezza */
 }
 
 /* Placeholder se manca immagine */
@@ -12,12 +13,14 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   background-color: #f8f9fa;
+  display: block;
 }
 
 /* ===============================
    CARD STYLING
 ================================ */
 .recipe-card {
+  height: 100%; /* fondamentale per uniformità */
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -33,7 +36,7 @@
 ================================ */
 .card-title {
   color: #000 !important;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1.2rem;
 }
 
@@ -45,11 +48,8 @@
 /* ===============================
    BOTTONI
 ================================ */
-/* Buttons */
 .card-body a.btn {
-  width: auto;
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
+  margin: 0.25rem;
 }
 
 /* ===============================
@@ -58,7 +58,6 @@
 .recipe-detail-img {
   max-width: 400px;
   width: 100%;
-  height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
@@ -72,10 +71,10 @@
 /* Mobile */
 @media (max-width: 575px) {
   .card-title {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .card-text {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 }
