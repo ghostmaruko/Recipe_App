@@ -1,4 +1,6 @@
-{% extends "recipes/base.html" %} {% load widget_tweaks %} {% block content %}
+{% extends "recipes/base.html" %}
+{% load widget_tweaks %}
+{% block content %}
 
 <div class="d-flex justify-content-between align-items-center mb-4">
   <h1 class="mb-0">All Recipes</h1>
@@ -11,36 +13,21 @@
 <div class="mb-4">
   <form method="get" class="row g-3">
     <div class="col-md-6">{{ form.recipe_name|add_class:"form-control" }}</div>
-
     <div class="col-md-4">{{ form.category|add_class:"form-select" }}</div>
-
     <div class="col-md-2">
       <button type="submit" class="btn btn-primary w-100">Search</button>
     </div>
   </form>
 </div>
 
-<!-- Search Results Table (pandas) -->
-{% if table %}
-<div class="mb-5">
-  <h2 class="mb-3">Search Results (Table)</h2>
-  <div class="table-responsive">{{ table|safe }}</div>
-</div>
-{% endif %}
-
 <!-- Lista ricette -->
-<!-- Lista ricette -->
-<div class="row">
+<div class="row row-cols-1 row-cols-md-3 g-4">
   {% for recipe in recipes %}
-  <div class="col-12 col-sm-6 col-lg-4 mb-4">
-    <div class="card h-100 shadow-sm recipe-card">
+  <div class="col d-flex">
+    <div class="card shadow-sm recipe-card flex-fill">
       {% if recipe.image %}
       <a href="{% url 'recipes:detail' recipe.pk %}">
-        <img
-          src="{{ recipe.image.url }}"
-          class="card-img-top recipe-img"
-          alt="{{ recipe.name }}"
-        />
+        <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}" class="recipe-img card-img-top" />
       </a>
       {% else %}
       <div class="recipe-placeholder"></div>
@@ -48,17 +35,10 @@
 
       <div class="card-body text-center d-flex flex-column">
         <h5 class="card-title mt-2">{{ recipe.name }}</h5>
-
         {% if recipe.category %}
-        <p class="text-muted mb-3">{{ recipe.get_category_display }}</p>
+        <p class="text-muted">{{ recipe.get_category_display }}</p>
         {% endif %}
-
-        <a
-          href="{% url 'recipes:detail' recipe.pk %}"
-          class="btn btn-primary mt-auto"
-        >
-          View Recipe
-        </a>
+        <a href="{% url 'recipes:detail' recipe.pk %}" class="btn btn-primary mt-auto">View Recipe</a>
       </div>
     </div>
   </div>
@@ -68,3 +48,4 @@
 </div>
 
 {% endblock %}
+
