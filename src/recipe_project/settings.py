@@ -2,20 +2,21 @@ import os
 from pathlib import Path
 import dj_database_url  # per database esterni, es. Postgres su Render
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# ===============================
+# BASE DIR
+# ===============================
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# Legge la chiave dall'environment variable SECRET_KEY, se non c'è usa una dev-key
+# ===============================
+# SECURITY
+# ===============================
 SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key')
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
-
-# Allowed hosts
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
-# Application definition
+# ===============================
+# APPLICATION DEFINITION
+# ===============================
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +40,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# ===============================
+# WhiteNoise per static files
+# ===============================
+if not DEBUG:
+    MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+
 ROOT_URLCONF = 'recipe_project.urls'
 
 TEMPLATES = [
@@ -58,15 +65,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'recipe_project.wsgi.application'
 
-# Database
-# Usa DATABASE_URL dall'env (Render fornisce Postgres), altrimenti SQLite locale
+# ===============================
+# DATABASE
+# ===============================
 DATABASES = {
     'default': dj_database_url.config(
         default=f'sqlite:///{BASE_DIR / "db.sqlite3"}'
     )
 }
 
-# Password validation
+# ===============================
+# PASSWORD VALIDATION
+# ===============================
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -74,18 +84,35 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Internationalization
+# ===============================
+# INTERNATIONALIZATION
+# ===============================
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JS, Images)
+# ===============================
+# STATIC FILES
+# ===============================
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # necessario per collectstatic in produzione
 
+# Cartelle static extra (se usi static fuori dalle app)
+STATICFILES_DIRS = [
+    BASE_DIR / 'recipes' / 'static',
+]
+
+if not DEBUG:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# ===============================
+# MEDIA FILES
+# ===============================
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# Login
+# ===============================
+# LOGIN
+# ===============================
 LOGIN_URL = '/login/'
