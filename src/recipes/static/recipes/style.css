@@ -1,18 +1,22 @@
-/* Lista ricette – immagini 1:1 */
+/* ===============================
+   CARD LIST – IMMAGINI
+================================ */
 .recipe-img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
-/* Placeholder per card senza immagine */
+/* Placeholder se manca immagine */
 .recipe-placeholder {
   width: 100%;
   aspect-ratio: 1 / 1;
   background-color: #f8f9fa;
 }
 
-/* Card hover */
+/* ===============================
+   CARD STYLING
+================================ */
 .recipe-card {
   transition:
     transform 0.2s ease,
@@ -24,7 +28,9 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-/* Titoli e testo */
+/* ===============================
+   TESTO
+================================ */
 .card-title {
   color: #000 !important;
   font-weight: bold;
@@ -36,6 +42,9 @@
   font-size: 0.95rem;
 }
 
+/* ===============================
+   BOTTONI
+================================ */
 /* Buttons */
 .card-body a.btn {
   width: auto;
@@ -43,14 +52,30 @@
   margin-left: 0.5rem;
 }
 
-/* Dettaglio ricetta  */
+/* ===============================
+   DETAIL PAGE
+================================ */
 .recipe-detail-img {
   max-width: 400px;
-  max-height: 400px;
   width: 100%;
   height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 1.5rem auto;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+/* Mobile */
+@media (max-width: 575px) {
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-text {
+    font-size: 0.95rem;
+  }
 }

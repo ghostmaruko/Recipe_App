@@ -24,17 +24,15 @@
 {% if table %}
 <div class="mb-5">
   <h2 class="mb-3">Search Results (Table)</h2>
-  <div class="table-responsive">
-    {{ table|safe }}
-  </div>
+  <div class="table-responsive">{{ table|safe }}</div>
 </div>
 {% endif %}
 
-
 <!-- Lista ricette -->
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<!-- Lista ricette -->
+<div class="row">
   {% for recipe in recipes %}
-  <div class="col">
+  <div class="col-12 col-sm-6 col-lg-4 mb-4">
     <div class="card h-100 shadow-sm recipe-card">
       {% if recipe.image %}
       <a href="{% url 'recipes:detail' recipe.pk %}">
@@ -48,16 +46,19 @@
       <div class="recipe-placeholder"></div>
       {% endif %}
 
-      <div class="card-body text-center">
+      <div class="card-body text-center d-flex flex-column">
         <h5 class="card-title mt-2">{{ recipe.name }}</h5>
+
         {% if recipe.category %}
-        <p class="text-muted">{{ recipe.get_category_display }}</p>
+        <p class="text-muted mb-3">{{ recipe.get_category_display }}</p>
         {% endif %}
+
         <a
           href="{% url 'recipes:detail' recipe.pk %}"
-          class="btn btn-primary mt-2"
-          >View Recipe</a
+          class="btn btn-primary mt-auto"
         >
+          View Recipe
+        </a>
       </div>
     </div>
   </div>
@@ -65,4 +66,5 @@
   <p>No recipes found.</p>
   {% endfor %}
 </div>
+
 {% endblock %}
