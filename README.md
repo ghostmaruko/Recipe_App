@@ -96,4 +96,4 @@ This project is intended for educational purposes and demonstrates best practice
 **Recipes**
 ![Recipes View](screenshot/recipe.png)
 
-![Recipes View](screenshot/home2.png.png)
+![Recipes View 2](screenshot/home2.png)
