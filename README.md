@@ -45,35 +45,42 @@ recipe_app/
 ├── auth/
 ├── manage.py
 
-
 ---
 
-##  Getting Started
+## Getting Started
 
 ### 1. Clone the repository
+
 git clone https://github.com/ghostmaruko/recipe-app.git
 cd recipe-app
 
 ### 2. Create and activate a virtual environment
+
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate # On Windows: venv\Scripts\activate
 
 ### 3. Install dependencies
+
 pip install -r requirements.txt
 
 ### 4. Apply migrations
+
 python manage.py migrate
 
 ### 5. Create a superuser
+
 python manage.py createsuperuser
 
 ### 6. Run the development server
+
 python manage.py runserver
 
 ### Open your browser at:
+
 http://127.0.0.1:8000/
 
 ### Authentication
+
 Some views are protected and require login
 Only authenticated users can create, edit, or delete recipes
 
@@ -83,3 +90,10 @@ Portfolio: https://portfolio-ecru-theta-66.vercel.app/
 
 📌 Notes
 This project is intended for educational purposes and demonstrates best practices in Django development, including MVT architecture, authentication, and data handling.
+
+# Screenshot
+
+**Recipes**
+![Recipes View](screenshot/recipe.png)
+
+![Recipes View](screenshot/home2.png.png)
